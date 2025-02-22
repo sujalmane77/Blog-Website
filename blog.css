@@ -1,0 +1,107 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #eafaf1;
+    color: #333;
+}
+
+/* Header Styles */
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #006d77;
+    color: #fff;
+    box-shadow: none;
+}
+
+#header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+#btn1 {
+    background-color: #83c5be;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    align-items: center;
+}
+
+#btn1:hover {
+    background-color: #006d77;
+}
+
+#linkedin-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    background-color: #0072b1;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#linkedin-link:hover {
+    background-color: #004182;
+}
+
+/* Content Section */
+#content {
+    padding: 20px;
+    margin: 20px auto;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 800px;
+}
+
+/* About Section */
+#about {
+    padding: 20px;
+    margin: 20px auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-width: 800px;
+}
+
+/* Posts Section */
+#posts {
+    padding: 20px;
+    margin: 20px auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-width: 800px;
+    text-align: center;
+}
+
+/* Footer Styles */
+#footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #006d77;
+    color: #fff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    border-top: none;
+}
+#clg {
+    color: #236bd7; /* Default text color */
+    text-decoration: none; /* Removes underline */
+    font-weight: bold;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+#clg:hover {
+    color:#236bd7; /* Changes color on hover */
+    text-decoration: underline; /* Underlines on hover */
+}

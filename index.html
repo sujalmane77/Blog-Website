@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY BLOG</title>
+    <link rel="stylesheet" href="blog.css">
+</head>
+<body id="change">
+    <header id="header">
+        <h1> Sujal's Blog</h1>
+        <button id="btn1" onclick="changetheme()">🌙</button>
+        <a id="linkedin-link" href="https://www.linkedin.com/in/sujal-mane-11a6962a9/" target="_blank">LinkedIn</a>
+    </header>
+    <main>
+        <section id="content">
+            <p>Currently there are no post uploaded</p>
+        </section>
+        <section id="about">
+            <h2>About the Author</h2>
+            <p>Hi, I am Sujal Mane, currently studying at <a id="clg" href="https://engineering.nmims.edu/"
+                >NMIMS Mukesh Patel School of Technology</a> and Management Engineering, pursuing a B.Tech in IT (2nd year).</p>
+            <p>I am passionate about learning new things and connecting with people. Feel free to reach out to me via LinkedIn.</p>
+            <p>In my free time, I love exploring new technologies, writing blogs, and sharing knowledge with others.</p>
+        </section>
+        <section id="posts">
+            <h2>Previous Posts</h2>
+            <div id="post-list"></div>
+        </section>
+        
+        <script>
+            async function fetchPosts() {
+                const response = await fetch('/api/posts');
+                const posts = await response.json();
+                const postList = document.getElementById('post-list');
+        
+                posts.forEach(post => {
+                    const postElement = document.createElement('div');
+                    postElement.innerHTML = `<h3>${post.title}</h3><p>${post.content}</p><small>${new Date(post.created_at).toLocaleString()}</small>`;
+                    postList.appendChild(postElement);
+                });
+            }
+        
+            fetchPosts();
+        </script>
+        
+    </main>
+    <footer id="footer">
+        <p>&copy; 2024 Sujal Mane | Blog Page</p>
+    </footer>
+    <script src="js for blog.js">
+    </script>
+</body>
+</html>
