@@ -14,13 +14,17 @@ const db = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASS,
-    database: process.env.DB_NAME
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT || 3306
 });
 
 
 db.connect(err => {
-    if (err) throw err;
-    console.log('Connected to MySQL database');
+    if (err){
+        console.log('Connected to MySQL database');
+        process.exit(1);
+    }
+    console.log('Connected to mysql database')
 });
 
 // API Route to Get All Posts
