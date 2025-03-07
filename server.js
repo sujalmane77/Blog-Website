@@ -10,22 +10,28 @@ const app = express();
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-const db = mysql.createConnection({
+const mysql = require('mysql2');
+
+const db = mysql.createPool({
+    connectionLimit: 10,  // Allows up to 10 simultaneous connections
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASS,
     database: process.env.DB_NAME,
-    port: process.env.DB_PORT || 3306
+    port: process.env.DB_PORT || 3306,
+    waitForConnections: true,
+    queueLimit: 0
 });
 
-
-db.connect(err => {
-    if (err){
-        console.log('Connected to MySQL database');
+db.getConnection((err, connection) => {
+    if (err) {
+        console.error('Database connection failed:', err);
         process.exit(1);
     }
-    console.log('Connected to mysql database')
+    console.log('Connected to MySQL database');
+    connection.release(); // Release the connection after checking
 });
+
 
 // API Route to Get All Posts
 app.get('/api/posts', (req, res) => {
@@ -53,4 +59,6 @@ app.get('/', (req, res) => {
 
 // Start Server
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
