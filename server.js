@@ -10,8 +10,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-const mysql = require('mysql2');
-
 const db = mysql.createPool({
     connectionLimit: 10,  // Allows up to 10 simultaneous connections
     host: process.env.DB_HOST,
